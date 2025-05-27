@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  .dark {
+    /* Color (Dark Mode) */
+    --color-primary-1: #09090B;
+    --color-primary-2: #18181B;
+    --color-primary-3: #27272A;
+    --color-primary-4: #404040;
+    --color-accent-1: #D9D9D9;
+    --color-accent-2: #FAFAFA;
+    --color-accent-3: #FFFFFF;
+    --color-success: #05DF72;
+
+    /* Font */
+    --font-lexend: var(--font-lexend), sans-serif;
+    --font-calistoga: var(--font-calistoga), serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+@theme {
+  /* Color (Light Mode) */
+  --color-primary-1: #FFFFFF;
+  --color-primary-2: #F5F5F5;
+  --color-primary-3: #E5E5E5;
+  --color-primary-4: #D4D4D8;
+  --color-accent-1: #27272A;
+  --color-accent-2: #18181B;
+  --color-accent-3: #09090B;
+  --color-success: #059669;
+
+  /* Font */
+  --font-lexend: var(--font-lexend), sans-serif;
+  --font-calistoga: var(--font-calistoga), serif;
+}
+
+
+
+.badge {
+  @apply bg-primary-2 w-fit border-2 border-primary-3;
+}
+
+
+.button-1 {
+  @apply bg-gradient-to-r from-[var(--color-primary-2)] via-[var(--color-primary-3)] to-[var(--color-primary-2)] bg-[length:200%_100%] bg-[position:0%_50%] w-fit border-2 border-[var(--color-primary-3)] px-4 py-1.5 md:px-5 md:py-2 rounded-full z-30 text-sm md:text-base transition-all duration-300 ease-in-out hover:bg-[position:100%_50%] hover:-translate-y-0.5;
+}
+
+
+.outline-text {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
 }
