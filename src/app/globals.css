@@ -17,6 +17,7 @@
     /* Font */
     --font-lexend: var(--font-lexend), sans-serif;
     --font-calistoga: var(--font-calistoga), serif;
+    --font-geistMono: var(--font-geist-mono), monospace;
   }
 }
 
@@ -35,6 +36,7 @@
   /* Font */
   --font-lexend: var(--font-lexend), sans-serif;
   --font-calistoga: var(--font-calistoga), serif;
+  --font-geist-mono: var(--font-geist-mono), monospace;
 }
 
 
@@ -52,4 +54,15 @@
 .outline-text {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 1px;
+}
+
+
+.input {
+  @apply
+    flex w-full min-w-0 rounded-md border border-primary-3 bg-transparent px-3 py-2
+    outline-none shadow-xs
+    transition-[color,box-shadow] duration-250
+    placeholder:text-accent-3/40
+    focus-visible:border-accent-1 focus-visible:ring-accent-1/40 focus-visible:ring-[3px]
+    disabled:cursor-not-allowed disabled:opacity-30;
 }

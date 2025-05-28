@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sendgrid/mail": "^8.1.5",
     "clsx": "^2.1.1",
+    "fabric": "^6.6.6",
     "motion": "^12.14.0",
     "next": "15.3.2",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {

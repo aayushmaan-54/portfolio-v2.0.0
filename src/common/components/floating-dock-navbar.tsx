@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import floatingDockNavbarData from "~/common/data/floating-dock-navbar-data";
 import { motion } from "motion/react";
 import { FloatDockNavItem } from "~/common/types/types";
@@ -14,50 +14,51 @@ export default function FloatingDockNavbar() {
   const pathname = usePathname();
 
 
-  const flattenedItems: FloatDockNavItem[] = [];
-  let globalIndex = 0;
+  const flattenedItems: FloatDockNavItem[] = useMemo(() => {
+    const items: FloatDockNavItem[] = [];
+    let globalIndex = 0;
 
-
-  floatingDockNavbarData.navigations.forEach((item) => {
-    flattenedItems.push({
-      ...item,
-      globalIndex,
-      type: 'navigation',
-      color: 'text-blue-400'
+    floatingDockNavbarData.navigations.forEach((item) => {
+      items.push({
+        ...item,
+        globalIndex,
+        type: 'navigation',
+        color: 'text-blue-400'
+      });
+      globalIndex++;
     });
+
+    items.push({ type: 'separator', globalIndex });
     globalIndex++;
-  });
 
-  flattenedItems.push({ type: 'separator', globalIndex });
-  globalIndex++;
-
-
-  Object.entries(floatingDockNavbarData.socials).forEach(([key, social]) => {
-    flattenedItems.push({
-      title: key.charAt(0).toUpperCase() + key.slice(1),
-      url: social.url,
-      icon: social.icon,
-      globalIndex,
-      type: 'social',
+    Object.entries(floatingDockNavbarData.socials).forEach(([key, social]) => {
+      items.push({
+        title: key.charAt(0).toUpperCase() + key.slice(1),
+        url: social.url,
+        icon: social.icon,
+        globalIndex,
+        type: 'social',
+      });
+      globalIndex++;
     });
+
+    items.push({ type: 'separator', globalIndex });
     globalIndex++;
-  });
 
-  flattenedItems.push({ type: 'separator', globalIndex });
-  globalIndex++;
-
-
-  Object.entries(floatingDockNavbarData.extras).forEach(([key, extra]) => {
-    flattenedItems.push({
-      title: key === 'downloadResume' ? 'Resume' : key,
-      url: extra.url,
-      icon: extra.icon,
-      globalIndex,
-      type: 'extra',
-      color: 'text-green-400'
+    Object.entries(floatingDockNavbarData.extras).forEach(([key, extra]) => {
+      items.push({
+        title: key === 'downloadResume' ? 'Resume' : key,
+        url: extra.url,
+        icon: extra.icon,
+        globalIndex,
+        type: 'extra',
+        color: 'text-green-400'
+      });
+      globalIndex++;
     });
-    globalIndex++;
-  });
+
+    return items;
+  }, []);
 
 
   useEffect(() => {
@@ -69,7 +70,6 @@ export default function FloatingDockNavbar() {
       setActiveIndex(foundIndex);
     }
   }, [pathname, flattenedItems]);
-
 
 
   const getScale = (index: number) => {

@@ -39,7 +39,7 @@ export default function Footer() {
             )
           })}
         </div>
-        <span className="text-accent-3/60 text-xs font-medium transition-colors duration-500">&copy; {getCurrentYear()} Aayushmaan Soni</span>
+        <span className="text-accent-3/60 text-xs font-medium">&copy; {getCurrentYear()} Aayushmaan Soni</span>
       </footer>
     </>
   );

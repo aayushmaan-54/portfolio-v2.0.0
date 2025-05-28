@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface RandomSvgUnderlineProps {
   strokeWidth?: number;
   minHeight?: number;
@@ -15,4 +17,15 @@ export interface FloatDockNavItem {
   title?: string;
   icon?: React.ComponentType<{ size: number; className: string }>;
   color?: string;
+}
+
+
+export interface MacBrowserMockProps {
+  browserUrl: string;
+  browserPageImage: StaticImageData;
+}
+
+export interface sendContactEmailActionProps {
+  status: 'success' | 'error' | '';
+  message: string;
 }

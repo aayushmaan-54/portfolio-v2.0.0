@@ -9,9 +9,9 @@ const navLinks = [
     icon: Icons.Home,
   },
   {
-    title: 'Experience',
-    url: '/experience',
-    icon: Icons.BriefcaseBusiness,
+    title: 'Experience & Education',
+    url: '/experience-education',
+    icon: Icons.Award,
   },
   {
     title: 'Projects',
@@ -20,7 +20,7 @@ const navLinks = [
   },
   {
     title: 'Blogs',
-    url: '/blog',
+    url: '/blogs',
     icon: Icons.Newspaper,
   },
   {
@@ -29,8 +29,8 @@ const navLinks = [
     icon: Icons.Phone,
   },
   {
-    title: 'Visitors',
-    url: '/visitors',
+    title: 'Doodle Wall',
+    url: '/doodle-wall',
     icon: Icons.Palette,
   },
 ]

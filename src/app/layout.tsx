@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from '~/common/providers/theme-provider';
-import { Calistoga, Lexend } from "next/font/google";
+import { Calistoga, Geist_Mono, Lexend } from "next/font/google";
 import "./globals.css";
 import Header from "~/common/components/header";
 import Footer from "~/common/components/footer";
 import FloatingDockNavbar from "~/common/components/floating-dock-navbar";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -41,6 +42,13 @@ const calistoga = Calistoga({
   variable: '--font-calistoga',
 });
 
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-geist-mono',
+})
+
 
 export default function RootLayout({
   children,
@@ -52,7 +60,7 @@ export default function RootLayout({
       <body
         className={`
           ${lexend.className}
-          ${lexend.variable} ${calistoga.variable}
+          ${lexend.variable} ${calistoga.variable} ${geistMono.variable}
           antialiased bg-primary-1 text-accent-3 transition-all ease-in-out
           flex flex-col min-h-screen
         `}
@@ -64,6 +72,7 @@ export default function RootLayout({
           disableTransitionOnChange={false}
           storageKey="theme"
         >
+          <Toaster position="top-center" />
           <Header />
           <main className="flex-grow">
             {children}
