@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const, @typescript-eslint/no-explicit-any */
 'use server';
 import { Client, Databases } from 'node-appwrite';
 import { IncrementHeartActionResult } from '~/common/types/types';

@@ -34,7 +34,7 @@ export default function BlogsPage() {
           <main className="max-w-6xl mx-auto px-4 py-12 md:py-16">
             {sortedBlogs.length !== 0 && (
               <div className="grid gap-8 md:gap-10 lg:gap-12">
-                {sortedBlogs.map((blog, index) => (
+                {sortedBlogs.map((blog) => (
                   <article
                     key={blog.slug}
                     className="group relative bg-primary-2 hover:bg-primary-1 border border-primary-3 hover:border-primary-4 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:shadow-lg hover:shadow-primary-3/20"

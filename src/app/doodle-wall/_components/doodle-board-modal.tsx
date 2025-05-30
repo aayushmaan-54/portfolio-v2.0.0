@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const, @typescript-eslint/no-explicit-any */
 "use client";
 import { useEffect, useRef, useState } from 'react';
 import * as fabric from 'fabric';

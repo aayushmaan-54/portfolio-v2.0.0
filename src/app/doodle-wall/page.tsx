@@ -82,7 +82,7 @@ export default function DoodleWallPage() {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [doodles]);
+  }, [doodles, generateRandomPositions]);
 
 
   const fetchDoodles = async () => {
@@ -108,7 +108,7 @@ export default function DoodleWallPage() {
     if (!isLoadingDoodles && doodles.length > 0) {
       generateRandomPositions();
     }
-  }, [isLoadingDoodles, doodles]);
+  }, [isLoadingDoodles, doodles, generateRandomPositions]);
 
 
   const handleShuffleDoodles = () => {

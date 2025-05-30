@@ -1,5 +1,6 @@
+/* eslint-disable prefer-const, @typescript-eslint/no-explicit-any */
 "use server";
-import { Client, Databases, ID, Models } from "node-appwrite";
+import { Client, Databases, ID } from "node-appwrite";
 import { headers } from "next/headers";
 import { SubmitDoodleActionResult } from "~/common/types/types";
 
