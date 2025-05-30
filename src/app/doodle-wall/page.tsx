@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import DoodleBoardModal from "./_components/doodle-board-modal";
 import { Models } from "appwrite";
 import { getRandomDoodles } from "~/actions/get-random-doodle.action";
@@ -25,7 +25,7 @@ export default function DoodleWallPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
 
-  const generateRandomPositions = () => {
+  const generateRandomPositions = useCallback(() => {
     if (!containerRef.current || doodles.length === 0) return;
 
     const container = containerRef.current;
@@ -41,8 +41,8 @@ export default function DoodleWallPage() {
       bottom: Math.max(0, containerHeight - cardHeight),
     });
 
-    const cols = Math.ceil(Math.sqrt(doodles.length * containerWidth / containerHeight));
-    const rows = Math.ceil(doodles.length / cols);
+    const cols = Math.max(1, Math.ceil(Math.sqrt(doodles.length * containerWidth / containerHeight)));
+    const rows = Math.max(1, Math.ceil(doodles.length / cols));
 
     const cellWidth = containerWidth / cols;
     const cellHeight = containerHeight / rows;
@@ -54,8 +54,9 @@ export default function DoodleWallPage() {
       const baseX = col * cellWidth + (cellWidth - cardWidth) / 2;
       const baseY = row * cellHeight + (cellHeight - cardHeight) / 2;
 
-      const randomOffsetX = (Math.random() - 0.5) * (cellWidth * 0.5);
-      const randomOffsetY = (Math.random() - 0.5) * (cellHeight * 0.5);
+      const randomFactor = Math.min(0.5, 0.1 + (doodles.length / 20));
+      const randomOffsetX = (Math.random() - 0.5) * (cellWidth * randomFactor);
+      const randomOffsetY = (Math.random() - 0.5) * (cellHeight * randomFactor);
 
       const x = Math.min(Math.max(0, baseX + randomOffsetX), containerWidth - cardWidth);
       const y = Math.min(Math.max(0, baseY + randomOffsetY), containerHeight - cardHeight);
@@ -70,18 +71,26 @@ export default function DoodleWallPage() {
     });
 
     setDoodlePositions(newPositions);
-  };
+  }, [doodles]);
 
 
   useEffect(() => {
+    let resizeTimer: NodeJS.Timeout;
+
     const handleResize = () => {
-      if (doodles.length > 0) {
-        generateRandomPositions();
-      }
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (doodles.length > 0) {
+          generateRandomPositions();
+        }
+      }, 200);
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimer);
+    };
   }, [doodles, generateRandomPositions]);
 
 
