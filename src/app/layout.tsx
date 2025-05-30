@@ -29,10 +29,11 @@ export const metadata: Metadata = {
     siteName: "Aayushmaan Soni",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.png?v=1",
         width: 1200,
         height: 630,
         alt: "Aayushmaan Soni Portfolio",
+        type: "image/png"
       },
     ],
     locale: "en_US",
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     title: "Aayushmaan Soni | Full Stack Web Developer",
     description:
       "Hi, I'm Aayushmaan Soni, a passionate Full Stack Web Developer specializing in modern JavaScript frameworks and creating innovative web applications. Explore my projects, skills, and journey in web development.",
-    images: ["/og-image.png"],
+    images: ["/og-image.png?v=1"],
   },
   keywords: [
     "Full Stack Developer",
