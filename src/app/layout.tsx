@@ -6,6 +6,7 @@ import Header from "~/common/components/header";
 import Footer from "~/common/components/footer";
 import FloatingDockNavbar from "~/common/components/floating-dock-navbar";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/next"
 
 
 
@@ -107,6 +108,7 @@ export default function RootLayout({
           <Footer />
           <FloatingDockNavbar />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
