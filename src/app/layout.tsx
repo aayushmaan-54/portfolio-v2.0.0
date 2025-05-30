@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Aayushmaan Soni | Full Stack Web Developer",
     description: "Explore my portfolio to learn more about my web development skills and projects.",
-    images: ['og-image.png'],
+    images: ['/og-image.png'],
   },
   keywords: ['Full Stack Developer', 'Web Development', 'Portfolio', 'MERN', 'Next.js'],
 };
