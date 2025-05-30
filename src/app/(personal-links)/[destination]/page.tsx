@@ -15,6 +15,8 @@ export default async function PersonalLinkRedirectPage({ params }: Readonly<{
     linkedin: socialsData.find(social => social.name === 'LinkedIn')?.link!,
     x: socialsData.find(social => social.name === 'X/Twitter')?.link!,
     twitter: socialsData.find(social => social.name === 'X/Twitter')?.link!,
+    instagram: 'https://www.instagram.com/aayushmaan.soni/#',
+    insta: 'https://www.instagram.com/aayushmaan.soni/#',
     resume: 'https://drive.google.com/file/d/1msLcDNzjsVKJMbzbIEeA6hKVoQllgnFu/view?usp=sharing',
     cv: 'https://drive.google.com/file/d/1msLcDNzjsVKJMbzbIEeA6hKVoQllgnFu/view?usp=sharing',
   }

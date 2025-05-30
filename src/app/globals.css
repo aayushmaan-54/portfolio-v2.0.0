@@ -1,5 +1,7 @@
-@import "tailwindcss";
+/* src/app/globals.css */
 
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 
 @layer base {
@@ -40,7 +42,6 @@
 }
 
 
-
 .badge {
   @apply bg-primary-2 w-fit border-2 border-primary-3;
 }
@@ -65,4 +66,57 @@
     placeholder:text-accent-3/40
     focus-visible:border-accent-1 focus-visible:ring-accent-1/40 focus-visible:ring-[3px]
     disabled:cursor-not-allowed disabled:opacity-30;
+}
+
+
+/* ========================================= */
+/* Rehype Pretty Code & Shiki Styling */
+/* ========================================= */
+.prose pre {
+  @apply bg-primary-3 border border-primary-4 rounded-lg p-6 mb-6 overflow-x-auto;
+  counter-reset: line;
+  margin: 1.5rem 0;
+}
+
+.prose code {
+  @apply bg-primary-3 text-accent-3 px-1.5 py-0.5 rounded-md text-sm font-geist-mono;
+  border: 1px solid var(--color-primary-4);
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 border-none;
+}
+
+.prose [data-rehype-pretty-code-figure] {
+  @apply my-8;
+}
+
+.prose [data-rehype-pretty-code-figure] pre {
+  @apply p-6 bg-primary-3 border border-primary-4;
+}
+
+.prose [data-rehype-pretty-code-title] {
+  @apply bg-primary-4 text-accent-1 text-sm px-6 py-3 rounded-t-lg border-b border-primary-3 -mb-2;
+  font-family: var(--font-geist-mono);
+}
+
+.prose .line {
+  @apply px-4 py-0.5 border-l-4 border-transparent;
+  display: block;
+  min-height: 1.25rem;
+}
+
+.prose .highlighted {
+  @apply bg-primary-4/30 border-l-success;
+}
+
+.prose [data-line-numbers] .line::before {
+  @apply inline-block w-8 mr-4 text-right text-primary-4;
+  counter-increment: line;
+  content: counter(line);
+  user-select: none;
+}
+
+.prose [data-line-numbers] {
+  padding-left: 1rem;
 }

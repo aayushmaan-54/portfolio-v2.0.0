@@ -8,7 +8,7 @@ import getCurrentYear from "../utils/get-current-year";
 export default function Footer() {
   return (
     <>
-      <footer className="w-full mt-auto py-4 pt-7 pb-32 flex flex-col items-center justify-center ext-sm font-bold border-t border-accent-1/20">
+      <footer className="w-full mt-auto py-4 pt-7 pb-32 flex flex-col items-center justify-center text-xs sm:text-sm font-bold border-t border-accent-1/20">
         <div className="flex flex-wrap items-center justify-center gap-4 mb-4">
           {navLinks.map((link, index) => (
             <Link

@@ -2,25 +2,77 @@
 import {
   useEffect,
   useRef,
-  useState
+  useState,
+  useTransition
 } from "react";
 import { motion } from "motion/react";
 import getCurrentDayTimeEmoji from "~/common/utils/get-current-day-time-emoji";
 import formatShortDateTime from "~/common/utils/format-short-date-time";
+import { Client, Databases } from "appwrite";
+import incrementHeartAction from "~/actions/increment-heart.action";
+import toast from "react-hot-toast";
+
+const client = new Client();
+client
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
+  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!);
+
+const databases = new Databases(client);
+
+const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
+const LIKES_COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_LIKES_COLLECTION_ID!;
+const LIKES_DOCUMENT_ID = process.env.NEXT_PUBLIC_APPWRITE_LIKES_DOCUMENT_ID!;
+
 
 
 
 export default function DraggableBadges() {
+  const [currentHeartCount, setCurrentHeartCount] = useState(0);
+  const [isPending, startTransition] = useTransition();
+  const [message, setMessage] = useState<string | null>(null);
+
   const badgesContainerRef = useRef<HTMLDivElement>(null)
 
   const [dayPeriod, setDayPeriod] = useState(getCurrentDayTimeEmoji())
-  const [likeCount, setLikeCount] = useState(45)
   const [currentDateTime, setCurrentDateTime] = useState(formatShortDateTime(new Date()))
   const [isMounted, setIsMounted] = useState(false)
 
-  const likeClickHandler = () => {
-    setLikeCount((prev) => prev + 1)
-  }
+
+  useEffect(() => {
+    const fetchGlobalCount = async () => {
+      try {
+        const doc = await databases.getDocument(
+          DATABASE_ID,
+          LIKES_COLLECTION_ID,
+          LIKES_DOCUMENT_ID
+        );
+        setCurrentHeartCount((doc.heart_count as number) || 0);
+      } catch (error) {
+        console.error('Error fetching global heart count:', error);
+        setMessage('Failed to load likes.');
+      }
+    };
+    fetchGlobalCount();
+  }, []);
+
+
+  const handleLike = async () => {
+    setMessage(null);
+    startTransition(async () => {
+      const result = await incrementHeartAction();
+      if (result.success && result.newHeartCount !== undefined) {
+        setCurrentHeartCount(result.newHeartCount);
+      } else {
+        setMessage(result.message || 'Failed to like.');
+      }
+    });
+  };
+
+
+  useEffect(() => {
+    if(!message) return;
+    toast.error(message);
+  }, [message]);
 
 
   useEffect(() => {
@@ -38,13 +90,25 @@ export default function DraggableBadges() {
   const dragConfig = {
     drag: true,
     dragConstraints: badgesContainerRef,
-    dragElastic: 0.65,
+    dragElastic: 0.2,
+    dragMomentum: true,
     dragTransition: {
-      power: 0.5,
-      timeConstant: 500,
-      bounceStiffness: 400,
-      bounceDamping: 0,
+      power: 0.2,
+      timeConstant: 200,
+      bounceStiffness: 300,
+      bounceDamping: 30,
+      restDelta: 0.5,
+      restSpeed: 5
     },
+    whileDrag: {
+      scale: 1.05,
+      zIndex: 50,
+      transition: { duration: 0.1 }
+    },
+    whileHover: {
+      scale: 1.02,
+      transition: { duration: 0.2 }
+    }
   }
 
   if (!isMounted) {
@@ -64,9 +128,13 @@ export default function DraggableBadges() {
         initial={{ rotate: 25 }}
         animate={{ rotate: 25 }}
       >
-        <span onClick={likeClickHandler} className="whitespace-nowrap">
-          🫀 {likeCount}
-        </span>
+        <button
+          onClick={handleLike}
+          disabled={isPending}
+          className="whitespace-nowrap"
+        >
+          🫀 {currentHeartCount} {isPending ? 'Liking...' : 'Likes'}
+        </button>
       </motion.div>
 
       <motion.div

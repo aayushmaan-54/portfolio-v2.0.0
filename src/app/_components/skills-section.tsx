@@ -15,7 +15,7 @@ export default function SkillsSection() {
       </div>
       <h1 className="text-accent-1/40 text-2xl sm:text-5xl font-black mt-1">What I&apos;m Good At</h1>
 
-      <div className="flex flex-wrap justify-start items-center gap-4 mt-4">
+      <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 mt-4">
         {skillsData.map((skill, index) => {
           const isNextJs = skill.title === "Next.js";
           const finalColor = isNextJs

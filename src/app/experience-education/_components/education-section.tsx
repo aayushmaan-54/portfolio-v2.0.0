@@ -17,9 +17,9 @@ export default function EducationSection() {
 
       <div className="space-y-10 sm:space-y-20 mb-20">
         {educationData.map((education, index) => (
-          <div key={index} className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 px-3 sm:px-10">
+          <div key={index} className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 px-3 sm:px-10">
             <div
-              className="flex-shrink-0 size-12 sm:size-14 rounded-lg overflow-hidden border flex items-center justify-center p-1 mx-auto sm:mx-0"
+              className="flex-shrink-0 size-12 sm:size-14 rounded-lg overflow-hidden border flex items-center justify-center p-1"
               style={{
                 backgroundColor: education.color + '1A',
                 borderColor: education.color,
@@ -34,7 +34,7 @@ export default function EducationSection() {
               />
             </div>
             <div className="flex-1 min-w-0 text-center sm:text-left">
-              <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-between w-full">
                 <div className="flex flex-col items-center sm:items-start">
                   <h5 className="text-lg font-semibold">
                     {education.title}
@@ -47,10 +47,10 @@ export default function EducationSection() {
                   {education.duration}
                 </span>
               </div>
-              <p className="text-sm text-accent-1/50 mb-2">
+              <p className="text-sm text-accent-1/50 mb-2 text-center sm:text-left">
                 {education.location}
               </p>
-              <p className="text-sm sm:text-base">
+              <p className="text-sm sm:text-base text-center sm:text-left">
                 {education.description}
               </p>
             </div>

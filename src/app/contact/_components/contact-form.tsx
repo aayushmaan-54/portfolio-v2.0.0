@@ -2,7 +2,7 @@
 import { useActionState, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import toast from 'react-hot-toast';
-import { sendContactEmail } from '~/actions/send-contact-email';
+import { sendContactEmail } from '~/actions/send-contact-email.action';
 import Icons from '~/common/icons/icons';
 import { sendContactEmailActionProps } from '~/common/types/types';
 

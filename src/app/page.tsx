@@ -3,6 +3,7 @@ import RecentBlogsSection from "./_components/recent-blogs-section";
 import SkillsSection from "./_components/skills-section";
 
 
+
 export default function Home() {
   return (
     <>
