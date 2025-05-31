@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 "use server";
 import { notFound, redirect } from 'next/navigation'
+import floatingDockNavbarData from '~/common/data/floating-dock-navbar-data';
 import socialsData from '~/common/data/socials-data'
 
 
@@ -17,8 +18,8 @@ export default async function PersonalLinkRedirectPage({ params }: Readonly<{
     twitter: socialsData.find(social => social.name === 'X/Twitter')?.link!,
     instagram: 'https://www.instagram.com/aayushmaan.soni/#',
     insta: 'https://www.instagram.com/aayushmaan.soni/#',
-    resume: 'https://drive.google.com/file/d/1msLcDNzjsVKJMbzbIEeA6hKVoQllgnFu/view?usp=sharing',
-    cv: 'https://drive.google.com/file/d/1msLcDNzjsVKJMbzbIEeA6hKVoQllgnFu/view?usp=sharing',
+    resume: floatingDockNavbarData.extras.downloadResume.url,
+    cv: floatingDockNavbarData.extras.downloadResume.url,
   }
 
 

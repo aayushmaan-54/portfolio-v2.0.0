@@ -22,7 +22,7 @@ const floatingDockNavbarData = {
   },
   extras: {
     downloadResume: {
-      url: 'https://drive.google.com/file/d/1msLcDNzjsVKJMbzbIEeA6hKVoQllgnFu/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/1F8O0d-i40No1dF-k7Q9tmkEQ3HycUn1v/view?usp=sharing',
       icon: Icons.TextFile
     }
   }
