@@ -74,31 +74,31 @@ const skillsData = [
     title: "Drizzle",
     color: "#C5F74F",
   },
-  {
-    icon: Icons.SocketIO,
-    title: "Socket.io",
-    color: "#25C2A0",
-  },
-  {
-    icon: Icons.Redis,
-    title: "Redis",
-    color: "#FF4438",
-  },
-  {
-    icon: Icons.Nginx,
-    title: "Nginx",
-    color: "#009639",
-  },
+  // {
+  //   icon: Icons.SocketIO,
+  //   title: "Socket.io",
+  //   color: "#25C2A0",
+  // },
+  // {
+  //   icon: Icons.Redis,
+  //   title: "Redis",
+  //   color: "#FF4438",
+  // },
+  // {
+  //   icon: Icons.Nginx,
+  //   title: "Nginx",
+  //   color: "#009639",
+  // },
   {
     icon: Icons.Docker,
     title: "Docker",
     color: "#2496ED",
   },
-  {
-    icon: Icons.AWS,
-    title: "AWS",
-    color: "#232F3E",
-  },
+  // {
+  //   icon: Icons.AWS,
+  //   title: "AWS",
+  //   color: "#232F3E",
+  // },
   {
     icon: Icons.Cpp,
     title: "C++",
