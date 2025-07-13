@@ -20,6 +20,7 @@ export default async function PersonalLinkRedirectPage({ params }: Readonly<{
     insta: 'https://www.instagram.com/aayushmaan.soni/#',
     resume: floatingDockNavbarData.extras.downloadResume.url,
     cv: floatingDockNavbarData.extras.downloadResume.url,
+    peerlist: 'https://peerlist.io/aayushmaansoni',
   }
 
 

@@ -9,12 +9,12 @@ const socialsData = [
   },
   {
     name: 'X/Twitter',
-    link: 'https://x.com/aayushmaan54',
+    link: 'https://x.com/aayushmaan5oni',
   },
   {
     name: 'Gmail',
-    gmailAddress: 'aayushmaan.soni54@gmail.com',
-    link: 'mailto:aayushmaan.soni54@gmail.com',
+    gmailAddress: 'aayushmaansoni.dev@gmail.com',
+    link: 'mailto:aayushmaansoni.dev@gmail.com',
   }
 ];
 
