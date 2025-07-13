@@ -1,3 +1,4 @@
+"use server";
 import type { Metadata } from "next";
 import { ThemeProvider } from '~/common/providers/theme-provider';
 import { Calistoga, Geist_Mono, Lexend } from "next/font/google";
