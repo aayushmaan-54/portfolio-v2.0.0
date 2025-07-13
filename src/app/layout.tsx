@@ -10,50 +10,52 @@ import { Analytics } from "@vercel/analytics/next"
 
 
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://www.aayushmaan.me"),
-  title: {
-    default: "Aayushmaan Soni | Full Stack Web Developer",
-    template: "Aayushmaan Soni | %s",
-  },
-  description:
-    "Hi, I'm Aayushmaan Soni, a passionate Full Stack Web Developer specializing in modern JavaScript frameworks and creating innovative web applications. Explore my projects, skills, and journey in web development.",
-  icons: {
-    icon: "/memoji.ico",
-  },
-  openGraph: {
-    title: "Aayushmaan Soni | Full Stack Web Developer",
-    description:
-      "Explore my portfolio to learn more about my web development skills and projects.",
-    url: "https://www.aayushmaan.me",
-    siteName: "Aayushmaan Soni",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Aayushmaan Soni Portfolio",
-        type: "image/png"
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Aayushmaan Soni | Full Stack Web Developer",
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL("https://www.aayushmaan.me"),
+    title: {
+      default: "Aayushmaan Soni | Full Stack Web Developer",
+      template: "Aayushmaan Soni | %s",
+    },
     description:
       "Hi, I'm Aayushmaan Soni, a passionate Full Stack Web Developer specializing in modern JavaScript frameworks and creating innovative web applications. Explore my projects, skills, and journey in web development.",
-    images: ["/og-image.png"],
-  },
-  keywords: [
-    "Full Stack Developer",
-    "Web Development",
-    "Portfolio",
-    "MERN",
-    "Next.js",
-  ],
-};
+    icons: {
+      icon: "/memoji.ico",
+    },
+    openGraph: {
+      title: "Aayushmaan Soni | Full Stack Web Developer",
+      description:
+        "Explore my portfolio to learn more about my web development skills and projects.",
+      url: "https://www.aayushmaan.me",
+      siteName: "Aayushmaan Soni",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Aayushmaan Soni Portfolio",
+          type: "image/png"
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Aayushmaan Soni | Full Stack Web Developer",
+      description:
+        "Hi, I'm Aayushmaan Soni, a passionate Full Stack Web Developer specializing in modern JavaScript frameworks and creating innovative web applications. Explore my projects, skills, and journey in web development.",
+      images: ["/og-image.png"],
+    },
+    keywords: [
+      "Full Stack Developer",
+      "Web Development",
+      "Portfolio",
+      "MERN",
+      "Next.js",
+    ],
+  }
+}
 
 
 
