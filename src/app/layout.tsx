@@ -14,26 +14,26 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.aayushmaan.me"),
   title: {
     default: "Aayushmaan Soni | Full Stack Web Developer",
-    template: "Aayushmaan Soni | %s",
+    template: "%s | Aayushmaan Soni",
   },
   description:
     "Hi, I'm Aayushmaan Soni, a passionate Full Stack Web Developer specializing in modern JavaScript frameworks and creating innovative web applications. Explore my projects, skills, and journey in web development.",
   icons: {
-    icon: "https://www.aayushmaan.me/memoji.ico",
+    icon: "/memoji.ico",
   },
   openGraph: {
     title: "Aayushmaan Soni | Full Stack Web Developer",
     description:
-      "Explore my portfolio to learn more about my web development skills and projects.",
+      "Hi, I'm Aayushmaan Soni, a passionate Full Stack Web Developer specializing in modern JavaScript frameworks and creating innovative web applications. Explore my projects, skills, and journey in web development.",
     url: "https://www.aayushmaan.me",
     siteName: "Aayushmaan Soni",
     images: [
       {
-        url: "https://www.aayushmaan.me/og-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Aayushmaan Soni Portfolio",
-        type: "image/png"
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -44,16 +44,39 @@ export const metadata: Metadata = {
     title: "Aayushmaan Soni | Full Stack Web Developer",
     description:
       "Hi, I'm Aayushmaan Soni, a passionate Full Stack Web Developer specializing in modern JavaScript frameworks and creating innovative web applications. Explore my projects, skills, and journey in web development.",
-    images: ["https://www.aayushmaan.me/og-image.png"],
+    images: ["/og-image.png"],
     creator: "@aayushmaan5oni",
-    site: "@aayushmaan5oni"
+    site: "@aayushmaan5oni",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "",
+    yandex: "",
+  },
+  alternates: {
+    canonical: "https://www.aayushmaan.me",
+  },
+  authors: [{ name: "Aayushmaan Soni", url: "https://www.aayushmaan.me" }],
   keywords: [
     "Full Stack Developer",
     "Web Development",
     "Portfolio",
     "MERN",
     "Next.js",
+    "React",
+    "JavaScript",
+    "Freelancer",
+    "Software Engineer",
   ],
 };
 
